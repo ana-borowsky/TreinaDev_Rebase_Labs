@@ -1,4 +1,4 @@
-version 3.9
+version: "3.9"
 
 services:
   app:
@@ -13,11 +13,11 @@ services:
     command: "ruby server.rb"
 
   postgres:
-    image:postgres
+    image: postgres
     volumes:
       - pgdata:/var/lib/postgresql/data
-      ports:
-        - "5432:5432"
+    ports:
+      - "5432:5432"
 
   volumes:
     rubygems:

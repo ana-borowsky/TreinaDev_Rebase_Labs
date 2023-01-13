@@ -31,13 +31,3 @@ table.each do |row|
                                      '#{row["data exame"]}', '#{row["tipo exame"]}',
                                      '#{row["limites tipo exame"]}', #{row["resultado tipo exame"]})")
 end
-
-
-
-
-
-
-
-
-
-
