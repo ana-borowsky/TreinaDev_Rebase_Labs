@@ -20,8 +20,12 @@ fetch(url).
       tdEmailPaciente.textContent = exam.email_paciente;
       tr.appendChild(tdEmailPaciente);
 
+      const date = new Date(exam.data_nascimento_paciente);
+      const day = date.getDate();
+      const month = date.getMonth();
+      const year = date.getFullYear();
       const tdDataNascimentoPaciente = document.createElement('td');
-      tdDataNascimentoPaciente.textContent = exam.data_nascimento_paciente;
+      tdDataNascimentoPaciente.textContent = `${day}/${month}/${year}`;
       tr.appendChild(tdDataNascimentoPaciente);
 
       const tdEnderecoPaciente = document.createElement('td');
@@ -52,8 +56,12 @@ fetch(url).
       tdEmailMedico.textContent = exam.email_medico;
       tr.appendChild(tdEmailMedico);
 
+      const date_exam = new Date(exam.data_exame);
+      const day_exam = date_exam.getDate();
+      const month_exam = date_exam.getMonth();
+      const year_exam = date_exam.getFullYear();
       const tdDataExame = document.createElement('td');
-      tdDataExame.textContent = exam.data_exame;
+      tdDataExame.textContent = `${day_exam}/${month_exam}/${year_exam}`;
       tr.appendChild(tdDataExame);
 
       const tdTipoExame = document.createElement('td');
