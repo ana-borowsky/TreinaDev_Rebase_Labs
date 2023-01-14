@@ -29,9 +29,10 @@ get '/hello' do
 end
 
 get '/data' do
-  data = conn.exec("SELECT * FROM data LIMIT 50")
+  sql = "SELECT * FROM data WHERE token_resultado_exame = '#{params['token']}'"
+  puts sql
+  data = conn.exec(sql)
   data.to_a.to_json
-
 end
 
 Rack::Handler::Puma.run(

@@ -1,3 +1,4 @@
+<html>
 <head>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -5,25 +6,36 @@
   <h1>
     <span style="color:#ffffff">CONSULTA</span><span style="color:#324960">EXAMES</span>
   </h1>
+  <div class="search">
+    <form>
+      <input id="searchInput" type="text" placeholder="Insira seu token">
+      <button  class="searchButton" type="submit" id="searchbutton">Buscar</button>
+    </form>
+  </div>
+  <div id="empty" class="hidden">
+    Token inválido! <br>
+    O token deve possuir seis caracteres <br>
+    e apenas com letras e números.
+  </div>
   <div class="table-wrapper">
-    <table class="fl-table">
+    <table class="fl-table hidden">
       <thead>
         <tr>
-            <th>CPF</th>
-            <th>Paciente</th>
-            <th>E-mail</th>
-            <th>Data de nascimento</th>
-            <th>Endereço</th>
-            <th>Cidade</th>
-            <th>Estado</th>
-            <th>CRM</th>
-            <th>Estado CRM</th>
-            <th>Médico</th>
-            <th>E-mail médico</th>
-            <th>Data exame</th>
-            <th>Exame</th>
-            <th>Limites</th>
-            <th>Resultado</th>
+          <th>CPF</th>
+          <th>Paciente</th>
+          <th>E-mail</th>
+          <th>Data de nascimento</th>
+          <th>Endereço</th>
+          <th>Cidade</th>
+          <th>Estado</th>
+          <th>CRM</th>
+          <th>Estado CRM</th>
+          <th>Médico</th>
+          <th>E-mail médico</th>
+          <th>Data exame</th>
+          <th>Exame</th>
+          <th>Limites</th>
+          <th>Resultado</th>
         </tr>
       </thead>
       <tbody>
@@ -32,3 +44,4 @@
   </div>
   <script src="main.js"></script>
 </body>
+</html>
