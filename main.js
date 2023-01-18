@@ -7,89 +7,37 @@ document.querySelector('form').addEventListener("submit", function(event) {
   const url = `http://localhost:3000/data?token=${input.value}`;
   const table = document.querySelector('table');
   const errorMessage = document.querySelector('#empty');
+  const header = document.querySelector('#header');
 
   fetch(url).
     then((response) => response.json()).
-    then((data) => {
-      if (data.length == 0){
+    then((formatted_data) => {
+      if (formatted_data.length == 0){
         table.classList.add("hidden");
+        header.classList.add("hidden");
         errorMessage.classList.remove("hidden");
       }
       else {
         table.classList.remove("hidden");
+        header.classList.remove("hidden");
         errorMessage.classList.add("hidden");
       }
 
-      data.forEach(function(exam) {
+      formatted_data.tests.forEach(function(exam) {
+        console.log(exam)
         const tr = document.createElement('tr');
 
-        const tdCpf = document.createElement('td');
-        tdCpf.textContent = exam.cpf;
-        tr.appendChild(tdCpf);
+        const tdType = document.createElement('td');
+        tdType.textContent = exam.type.toUpperCase();
+        tr.appendChild(tdType);
 
-        const tdNomePaciente = document.createElement('td');
-        tdNomePaciente.textContent = exam.nome_paciente;
-        tr.appendChild(tdNomePaciente);
+        const tdLimits = document.createElement('td');
+        tdLimits.textContent = exam.limits;
+        tr.appendChild(tdLimits);
 
-        const tdEmailPaciente = document.createElement('td');
-        tdEmailPaciente.textContent = exam.email_paciente;
-        tr.appendChild(tdEmailPaciente);
-
-        const date = new Date(exam.data_nascimento_paciente);
-        const day = date.getDate();
-        const month = date.getMonth();
-        const year = date.getFullYear();
-        const tdDataNascimentoPaciente = document.createElement('td');
-        tdDataNascimentoPaciente.textContent = `${day}/${month}/${year}`;
-        tr.appendChild(tdDataNascimentoPaciente);
-
-        const tdEnderecoPaciente = document.createElement('td');
-        tdEnderecoPaciente.textContent = exam.endereco_paciente;
-        tr.appendChild(tdEnderecoPaciente);
-
-        const tdCidadePaciente = document.createElement('td');
-        tdCidadePaciente.textContent = exam.cidade_paciente;
-        tr.appendChild(tdCidadePaciente);
-
-        const tdEstadoPaciente = document.createElement('td');
-        tdEstadoPaciente.textContent = exam.estado_paciente;
-        tr.appendChild(tdEstadoPaciente);
-
-        const tdCrmMedico = document.createElement('td');
-        tdCrmMedico.textContent = exam.crm_medico;
-        tr.appendChild(tdCrmMedico);
-
-        const tdCrmMedicoEstado = document.createElement('td');
-        tdCrmMedicoEstado.textContent = exam.crm_medico_estado;
-        tr.appendChild(tdCrmMedicoEstado);
-
-        const tdNomeMedico = document.createElement('td');
-        tdNomeMedico.textContent = exam.nome_medico;
-        tr.appendChild(tdNomeMedico);
-
-        const tdEmailMedico = document.createElement('td');
-        tdEmailMedico.textContent = exam.email_medico;
-        tr.appendChild(tdEmailMedico);
-
-        const date_exam = new Date(exam.data_exame);
-        const day_exam = date_exam.getDate();
-        const month_exam = date_exam.getMonth();
-        const year_exam = date_exam.getFullYear();
-        const tdDataExame = document.createElement('td');
-        tdDataExame.textContent = `${day_exam}/${month_exam}/${year_exam}`;
-        tr.appendChild(tdDataExame);
-
-        const tdTipoExame = document.createElement('td');
-        tdTipoExame.textContent = exam.tipo_exame.toUpperCase();
-        tr.appendChild(tdTipoExame);
-
-        const tdLimitesTipoExame = document.createElement('td');
-        tdLimitesTipoExame.textContent = exam.limites_tipo_exame;
-        tr.appendChild(tdLimitesTipoExame);
-
-        const tdResultadoTipoExame = document.createElement('td');
-        tdResultadoTipoExame.textContent = exam.resultado_tipo_exame;
-        tr.appendChild(tdResultadoTipoExame);
+        const tdResult = document.createElement('td');
+        tdResult.textContent = exam.result;
+        tr.appendChild(tdResult);
 
         tbody.appendChild(tr);
       })
