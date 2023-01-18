@@ -18,6 +18,12 @@ h1{
     padding: 30px 0;
 }
 
+span{
+    text-align: center;
+    font-family: Helvetica;
+    font-weight: bold;
+}
+
 .hidden{
     display: none;
 }
