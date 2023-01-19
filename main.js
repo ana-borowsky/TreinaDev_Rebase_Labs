@@ -8,6 +8,8 @@ document.querySelector('form').addEventListener("submit", function(event) {
   const table = document.querySelector('table');
   const errorMessage = document.querySelector('#empty');
   const header = document.querySelector('#header');
+  header.innerHTML = ''
+
 
   fetch(url).
     then((response) => response.json()).
